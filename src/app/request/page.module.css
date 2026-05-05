@@ -1,0 +1,4 @@
+.section {
+  padding-block: var(--space-16) var(--space-20);
+  background: var(--color-bg);
+}

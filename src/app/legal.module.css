@@ -1,0 +1,25 @@
+.section {
+  padding-block: var(--space-16) var(--space-20);
+  background: var(--color-bg);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+.body article {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.body h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
