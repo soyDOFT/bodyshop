@@ -1,11 +1,38 @@
-import styles from "./page.module.css";
+import { Container } from 'src/components/ui/Container/Container';
+import { HeroCarousel } from 'src/components/hero/HeroCarousel/HeroCarousel';
+import { ServiceCards } from 'src/components/sections/ServiceCards/ServiceCards';
+import { FeatureCards } from 'src/components/sections/FeatureCards/FeatureCards';
+import { ServiceAreasList } from 'src/components/sections/ServiceAreasList/ServiceAreasList';
+import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
+import { SITE_META } from 'src/data/siteMeta';
+import styles from './page.module.css';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Bodyshop</h1>
-      </main>
-    </div>
+    <>
+      <HeroCarousel />
+      <ServiceCards />
+      <section className={styles.intro} aria-labelledby="intro-heading">
+        <Container>
+          <p className={styles.eyebrow}>Your choice for {SITE_META.city} body shops</p>
+          <h1 id="intro-heading" className={styles.heading}>
+            Quality craftsmanship and outstanding customer service for over {SITE_META.yearsInBusiness} years.
+          </h1>
+          <p className={styles.body}>
+            When it comes to {SITE_META.city} body shops, accept only the best. We offer a wide
+            array of professional auto-body and custom-painting services. Our years of experience,
+            unmatched quality, and personalized customer service make us a leader for body shops
+            in {SITE_META.city}. We specialize in insurance work, insurance claims, and insurance
+            repairs. If you&rsquo;re looking for timely and reliable service from a shop that
+            really cares and takes pride in its work, trust {SITE_META.name}.
+          </p>
+        </Container>
+      </section>
+      <FeatureCards />
+      <ServiceAreasList
+        intro={`We serve the following ${SITE_META.city}-area neighborhoods from our shop in ${SITE_META.city}, ${SITE_META.state}.`}
+      />
+      <QuoteCta />
+    </>
   );
 }
