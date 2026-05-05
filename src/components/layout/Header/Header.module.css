@@ -1,0 +1,116 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.brandText {
+  display: none;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brandName {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  letter-spacing: -0.01em;
+}
+
+.brandTagline {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 480px) {
+  .brandText {
+    display: flex;
+  }
+}
+
+.desktopNav {
+  display: none;
+}
+
+.desktopList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.desktopLink {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.desktopLink:hover {
+  color: var(--color-accent-hover);
+  background: var(--color-surface);
+}
+
+.desktopLinkActive {
+  color: var(--color-accent-hover);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.menuTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: background-color var(--transition-fast);
+}
+
+.menuTrigger:hover {
+  background: var(--color-surface);
+}
+
+@media (min-width: 1024px) {
+  .desktopNav {
+    display: block;
+  }
+  .menuTrigger {
+    display: none;
+  }
+}

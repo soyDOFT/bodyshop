@@ -1,0 +1,42 @@
+import Link from 'next/link';
+import { Icon } from 'src/components/ui/Icon/Icon';
+import styles from './Breadcrumbs.module.css';
+
+export type BreadcrumbItem = {
+  label: string;
+  href?: string;
+};
+
+type BreadcrumbsProps = {
+  items: BreadcrumbItem[];
+};
+
+export function Breadcrumbs({ items }: BreadcrumbsProps) {
+  if (items.length === 0) return null;
+
+  return (
+    <nav aria-label="Breadcrumb" className={styles.nav}>
+      <ol className={styles.list}>
+        {items.map((item, idx) => {
+          const isLast = idx === items.length - 1;
+          return (
+            <li key={`${item.label}-${idx}`} className={styles.item}>
+              {item.href && !isLast ? (
+                <Link href={item.href} className={styles.link}>
+                  {item.label}
+                </Link>
+              ) : (
+                <span className={styles.current} aria-current={isLast ? 'page' : undefined}>
+                  {item.label}
+                </span>
+              )}
+              {!isLast && (
+                <Icon name="chevron-right" size={14} className={styles.separator} />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}
