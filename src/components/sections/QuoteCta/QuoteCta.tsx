@@ -11,7 +11,7 @@ type QuoteCtaProps = {
 
 export function QuoteCta({
   heading = 'Interested in our services? Request a quote.',
-  body = "Green's Body Shop is not a large, fancy hub of bustling activity, frantically trying to meet deadlines so as to move on to the next job as quickly as possible. Rather, it is a small business with all the necessary tools and equipment to complete any repair as well as — if not better than — the mega-shops.",
+  body = 'Exclusive Body Shop is not a large, fancy hub of bustling activity, frantically trying to meet deadlines so as to move on to the next job as quickly as possible. Rather, it is a small business with all the necessary tools and equipment to complete any repair as well as — if not better than — the mega-shops.",
   ctaLabel = 'Request a Quote',
 }: QuoteCtaProps) {
   return (

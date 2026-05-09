@@ -23,7 +23,7 @@ const FEATURES = [
     eyebrow: 'Customer Reviews',
     title: 'Customer Reviews',
     body:
-      "Read what owner Irvin Green's satisfied customers have to say and find out why they're so loyal. See the real results he has achieved.",
+      "Read what owner Walter Salazar's satisfied customers have to say and find out why they're so loyal. See the real results he has achieved.",
     cta: { label: 'Read Reviews', href: '/reviews' },
   },
 ] as const;

@@ -1,13 +1,13 @@
 export const SITE_META = {
-  name: "Green's Body Shop",
-  shortName: "Green's",
-  ownerName: "Irvin Green",
+  name: 'Exclusive Body Shop',
+  shortName: 'Exclusive',
+  ownerName: 'Walter Salazar',
   tagline: 'Your choice for Charlotte body shops.',
   description:
     "Charlotte's trusted body shop for collision repair, custom paint, and restoration. 30+ years of experience serving Charlotte and surrounding neighborhoods.",
   city: 'Charlotte',
   state: 'NC',
-  address: 'Serving Charlotte, NC & Surrounding Areas',
+  address: '2316 Beattles Ford Rd. Charlotte, NC 28216-4314',
   phone: '(555) 123-4567',
   phoneHref: 'tel:+15551234567',
   email: 'info@example.com',
@@ -19,7 +19,7 @@ export const SITE_META = {
     yelp: '#',
     googleReview: '#',
   },
-  copyrightHolder: "Green's Body Shop",
+  copyrightHolder: 'Exclusive Body Shop',
 } as const;
 
 export type SiteMeta = typeof SITE_META;
