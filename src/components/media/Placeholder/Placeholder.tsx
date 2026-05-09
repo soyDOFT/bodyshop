@@ -70,6 +70,7 @@ export function Placeholder({
         <span aria-hidden className={clsx(wrapperClass, styles.fillWrap)}>
           <Image
             src={PLACEHOLDER_SRC}
+            loading="eager"
             alt=""
             fill
             sizes="100vw"
@@ -81,6 +82,7 @@ export function Placeholder({
     return (
       <Image
         src={PLACEHOLDER_SRC}
+        loading="eager"
         alt=""
         aria-hidden
         width={width ?? 64}
@@ -95,6 +97,7 @@ export function Placeholder({
       <span className={wrapperClass + ' ' + styles.fillWrap}>
         <Image
           src={PLACEHOLDER_SRC}
+          loading="eager"
           alt={alt ?? ''}
           fill
           sizes={sizes ?? '100vw'}
@@ -108,6 +111,7 @@ export function Placeholder({
   return (
     <Image
       src={PLACEHOLDER_SRC}
+      loading="eager"
       alt={alt ?? ''}
       width={width!}
       height={height!}
