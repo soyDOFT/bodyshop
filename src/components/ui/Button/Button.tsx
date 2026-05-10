@@ -1,6 +1,10 @@
-import Link from 'next/link';
-import clsx from 'clsx';
 import styles from './Button.module.css';
+
+// next
+import Link from 'next/link';
+
+// helpers
+import clsx from 'clsx';
 
 type CommonProps = {
   variant?: 'primary' | 'secondary' | 'ghost' | 'onDark';

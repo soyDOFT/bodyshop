@@ -12,7 +12,6 @@
   background: rgba(0, 0, 0, 0.55);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition-base);
 }
 
 .backdropOpen {
@@ -27,10 +26,12 @@
   height: 100dvh;
   width: min(360px, 90vw);
   background: var(--color-bg);
+  transition: 
+    transform var(--transition-base),
+    visibility 0s linear 0s;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform var(--transition-base), visibility 0s linear var(--transition-base);
   visibility: hidden;
   z-index: 100;
   box-shadow: var(--shadow-lg);
@@ -41,12 +42,14 @@
   visibility: visible;
   pointer-events: auto;
   transform: translateX(0);
-  transition: transform var(--transition-base), visibility 0s linear 0s;
+  transition:
+    transform var(--transition-base),
+    visibility 0s linear 0s;
 }
 
 @media not (prefers-reduced-motion: reduce) {
   .drawer:not(.drawerOpen) {
-    transition-delay: 0s, var(--transition-base);
+    transition-delay: 0s, var(--duration-fast);
   }
 }
 
@@ -94,7 +97,9 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   border-left: 3px solid transparent;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .link:hover {

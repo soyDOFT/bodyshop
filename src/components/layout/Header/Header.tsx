@@ -1,17 +1,24 @@
 'use client';
-
+import styles from './Header.module.css';
 import { useState } from 'react';
+
+// next
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+// helpers
 import clsx from 'clsx';
-import { Container } from 'src/components/ui/Container/Container';
+
+// components
 import { Button } from 'src/components/ui/Button/Button';
+import { Container } from 'src/components/ui/Container/Container';
 import { Icon } from 'src/components/ui/Icon/Icon';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 import { NavMenu } from 'src/components/layout/NavMenu/NavMenu';
+import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+
+// data
 import { PRIMARY_NAV, QUOTE_LINK } from 'src/data/navigation';
 import { SITE_META } from 'src/data/siteMeta';
-import styles from './Header.module.css';
 
 const TRIGGER_ID = 'primary-nav-trigger';
 

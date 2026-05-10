@@ -1,10 +1,16 @@
+import './globals.css';
+
+// next
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Header } from 'src/components/layout/Header/Header';
+
+// components
 import { Footer } from 'src/components/layout/Footer/Footer';
+import { Header } from 'src/components/layout/Header/Header';
 import { SkipLink } from 'src/components/layout/SkipLink/SkipLink';
+
+// data
 import { SITE_META } from 'src/data/siteMeta';
-import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

@@ -1,7 +1,11 @@
+import styles from './TestimonialList.module.css';
+
+// components
 import { Container } from 'src/components/ui/Container/Container';
 import { Disclosure } from 'src/components/ui/Disclosure/Disclosure';
+
+// data
 import { TESTIMONIALS } from 'src/data/testimonials';
-import styles from './TestimonialList.module.css';
 
 export function TestimonialList() {
   return (

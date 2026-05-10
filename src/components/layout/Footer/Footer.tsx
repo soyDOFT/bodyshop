@@ -1,10 +1,16 @@
+import styles from './Footer.module.css';
+
+// next
 import Link from 'next/link';
+
+// components
 import { Container } from 'src/components/ui/Container/Container';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 import { Icon } from 'src/components/ui/Icon/Icon';
+import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+
+// data
 import { FOOTER_NAV } from 'src/data/navigation';
 import { SITE_META } from 'src/data/siteMeta';
-import styles from './Footer.module.css';
 
 export function Footer() {
   return (

@@ -1,14 +1,17 @@
 'use client';
-
+import styles from './QuoteForm.module.css';
 import { useId, useState } from 'react';
-import { Button } from 'src/components/ui/Button/Button';
-import { FormField } from 'src/components/form/FormField/FormField';
-import { Icon } from 'src/components/ui/Icon/Icon';
+
+// helpers
 import {
   quoteSchema,
   type QuoteFormValues,
 } from 'src/components/form/quoteSchema';
-import styles from './QuoteForm.module.css';
+
+// components
+import { Button } from 'src/components/ui/Button/Button';
+import { FormField } from 'src/components/form/FormField/FormField';
+import { Icon } from 'src/components/ui/Icon/Icon';
 
 type FieldErrors = Partial<Record<keyof QuoteFormValues, string>>;
 type Status = 'idle' | 'submitting' | 'success' | 'error';

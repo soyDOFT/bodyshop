@@ -1,8 +1,14 @@
+import styles from '../legal.module.css';
+
+// next
 import type { Metadata } from 'next';
+
+// components
 import { Container } from 'src/components/ui/Container/Container';
 import { PageHero } from 'src/components/layout/PageHero/PageHero';
+
+// data
 import { TERMS_SECTIONS } from 'src/data/legal/terms';
-import styles from '../legal.module.css';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions',

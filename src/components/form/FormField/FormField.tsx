@@ -1,5 +1,7 @@
-import clsx from 'clsx';
 import styles from './FormField.module.css';
+
+// helpers
+import clsx from 'clsx';
 
 type CommonProps = {
   id: string;

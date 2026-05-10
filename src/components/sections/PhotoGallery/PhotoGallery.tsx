@@ -1,10 +1,11 @@
 'use client';
-
-import { useState } from 'react';
-import { Container } from 'src/components/ui/Container/Container';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
-import { Lightbox, type LightboxImage } from 'src/components/ui/Lightbox/Lightbox';
 import styles from './PhotoGallery.module.css';
+import { useState } from 'react';
+
+// components
+import { Container } from 'src/components/ui/Container/Container';
+import { Lightbox, type LightboxImage } from 'src/components/ui/Lightbox/Lightbox';
+import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 
 type PhotoGalleryProps = {
   count?: number;

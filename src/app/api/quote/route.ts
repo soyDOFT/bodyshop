@@ -1,6 +1,11 @@
+// next
 import { NextResponse } from 'next/server';
+
+// helpers
 import nodemailer from 'nodemailer';
 import { quoteSchema } from 'src/components/form/quoteSchema';
+
+// data
 import { SITE_META } from 'src/data/siteMeta';
 
 export const runtime = 'nodejs';

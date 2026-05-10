@@ -60,8 +60,10 @@
   --line-height-normal: 1.55;
   --line-height-relaxed: 1.75;
 
-  --transition-fast: 120ms ease-out;
-  --transition-base: 200ms ease-out;
+  --duration-fast: 200ms;
+  --duration-base: 500ms;
+  --transition-fast: var(--duration-fast) ease-out;
+  --transition-base: var(--duration-base) ease-out;
 }
 
 *,

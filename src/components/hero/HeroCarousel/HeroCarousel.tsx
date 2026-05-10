@@ -1,15 +1,22 @@
 'use client';
-
+import styles from './HeroCarousel.module.css';
 import { useCallback, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+
+// helpers
 import clsx from 'clsx';
-import { Container } from 'src/components/ui/Container/Container';
+
+// hooks
+import useEmblaCarousel from 'embla-carousel-react';
+
+// components
 import { Button } from 'src/components/ui/Button/Button';
+import { Container } from 'src/components/ui/Container/Container';
 import { Icon } from 'src/components/ui/Icon/Icon';
 import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 import { VisuallyHidden } from 'src/components/ui/VisuallyHidden/VisuallyHidden';
+
+// data
 import { HERO_SLIDES } from 'src/data/services';
-import styles from './HeroCarousel.module.css';
 
 export function HeroCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });

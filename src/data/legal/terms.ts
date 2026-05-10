@@ -1,3 +1,4 @@
+// data
 import type { LegalSection } from './privacy';
 
 export const TERMS_SECTIONS: LegalSection[] = [

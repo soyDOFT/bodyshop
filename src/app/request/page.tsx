@@ -1,9 +1,15 @@
+import styles from './page.module.css';
+
+// next
 import type { Metadata } from 'next';
+
+// components
 import { Container } from 'src/components/ui/Container/Container';
 import { PageHero } from 'src/components/layout/PageHero/PageHero';
 import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
+
+// data
 import { SITE_META } from 'src/data/siteMeta';
-import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Request a Quote',

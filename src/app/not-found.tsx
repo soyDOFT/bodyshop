@@ -1,7 +1,11 @@
-import Link from 'next/link';
-import { Container } from 'src/components/ui/Container/Container';
-import { Button } from 'src/components/ui/Button/Button';
 import styles from './not-found.module.css';
+
+// next
+import Link from 'next/link';
+
+// components
+import { Button } from 'src/components/ui/Button/Button';
+import { Container } from 'src/components/ui/Container/Container';
 
 export default function NotFound() {
   return (

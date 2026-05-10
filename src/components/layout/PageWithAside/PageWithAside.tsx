@@ -1,5 +1,7 @@
-import { Container } from 'src/components/ui/Container/Container';
 import styles from './PageWithAside.module.css';
+
+// components
+import { Container } from 'src/components/ui/Container/Container';
 
 type PageWithAsideProps = {
   children: React.ReactNode;

@@ -1,14 +1,23 @@
 'use client';
-
+import styles from './NavMenu.module.css';
 import { useEffect, useRef } from 'react';
+
+// next
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+// helpers
 import clsx from 'clsx';
-import { Icon } from 'src/components/ui/Icon/Icon';
-import { Button } from 'src/components/ui/Button/Button';
+
+// hooks
 import { useLockBodyScroll } from 'src/utils/hooks/useLockBodyScroll';
+
+// components
+import { Button } from 'src/components/ui/Button/Button';
+import { Icon } from 'src/components/ui/Icon/Icon';
+
+// data
 import type { NavLink } from 'src/data/navigation';
-import styles from './NavMenu.module.css';
 
 type NavMenuProps = {
   links: NavLink[];

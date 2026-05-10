@@ -1,7 +1,12 @@
+// next
 import type { Metadata } from 'next';
+
+// components
 import { PageHero } from 'src/components/layout/PageHero/PageHero';
-import { ServiceAreasList } from 'src/components/sections/ServiceAreasList/ServiceAreasList';
 import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
+import { ServiceAreasList } from 'src/components/sections/ServiceAreasList/ServiceAreasList';
+
+// data
 import { SITE_META } from 'src/data/siteMeta';
 
 export const metadata: Metadata = {

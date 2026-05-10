@@ -1,8 +1,12 @@
-import { Container } from 'src/components/ui/Container/Container';
-import { Button } from 'src/components/ui/Button/Button';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
-import { HOME_SERVICE_HIGHLIGHTS } from 'src/data/services';
 import styles from './ServiceCards.module.css';
+
+// components
+import { Button } from 'src/components/ui/Button/Button';
+import { Container } from 'src/components/ui/Container/Container';
+import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+
+// data
+import { HOME_SERVICE_HIGHLIGHTS } from 'src/data/services';
 
 export function ServiceCards() {
   return (

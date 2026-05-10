@@ -1,24 +1,25 @@
+// components
+import type { IconType } from 'react-icons';
 import {
-  LuMenu,
-  LuX,
-  LuChevronLeft,
-  LuChevronRight,
-  LuChevronDown,
-  LuPlus,
-  LuMinus,
-  LuPhone,
-  LuMail,
-  LuMapPin,
-  LuClock,
   LuArrowRight,
   LuCheck,
+  LuChevronDown,
+  LuChevronLeft,
+  LuChevronRight,
+  LuClock,
+  LuMail,
+  LuMapPin,
+  LuMenu,
+  LuMinus,
+  LuPhone,
+  LuPlus,
+  LuX,
 } from 'react-icons/lu';
 import {
   SiFacebook,
-  SiYelp,
   SiGoogle,
+  SiYelp,
 } from 'react-icons/si';
-import type { IconType } from 'react-icons';
 
 export type IconName =
   | 'menu'

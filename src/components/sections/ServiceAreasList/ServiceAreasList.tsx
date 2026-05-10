@@ -1,8 +1,16 @@
-import Link from 'next/link';
-import clsx from 'clsx';
-import { Container } from 'src/components/ui/Container/Container';
-import { SERVICE_AREAS } from 'src/data/serviceAreas';
 import styles from './ServiceAreasList.module.css';
+
+// next
+import Link from 'next/link';
+
+// helpers
+import clsx from 'clsx';
+
+// components
+import { Container } from 'src/components/ui/Container/Container';
+
+// data
+import { SERVICE_AREAS } from 'src/data/serviceAreas';
 
 type ServiceAreasListProps = {
   variant?: 'plain' | 'banded';

@@ -1,6 +1,10 @@
-import Image from 'next/image';
-import clsx from 'clsx';
 import styles from './Placeholder.module.css';
+
+// next
+import Image from 'next/image';
+
+// helpers
+import clsx from 'clsx';
 
 const PLACEHOLDER_SRC = '/checkerboardpattern.svg';
 

@@ -1,7 +1,9 @@
-import { Container } from 'src/components/ui/Container/Container';
-import { Breadcrumbs, type BreadcrumbItem } from 'src/components/layout/Breadcrumbs/Breadcrumbs';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 import styles from './Hero.module.css';
+
+// components
+import { Breadcrumbs, type BreadcrumbItem } from 'src/components/layout/Breadcrumbs/Breadcrumbs';
+import { Container } from 'src/components/ui/Container/Container';
+import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 
 type HeroProps = {
   title: string;

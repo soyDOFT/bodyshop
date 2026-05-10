@@ -1,6 +1,10 @@
-import Link from 'next/link';
-import { Icon } from 'src/components/ui/Icon/Icon';
 import styles from './Breadcrumbs.module.css';
+
+// next
+import Link from 'next/link';
+
+// components
+import { Icon } from 'src/components/ui/Icon/Icon';
 
 export type BreadcrumbItem = {
   label: string;

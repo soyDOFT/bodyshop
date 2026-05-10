@@ -1,10 +1,13 @@
 'use client';
-
+import styles from './Lightbox.module.css';
 import { useEffect, useRef } from 'react';
+
+// hooks
+import { useLockBodyScroll } from 'src/utils/hooks/useLockBodyScroll';
+
+// components
 import { Icon } from 'src/components/ui/Icon/Icon';
 import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
-import { useLockBodyScroll } from 'src/utils/hooks/useLockBodyScroll';
-import styles from './Lightbox.module.css';
 
 export type LightboxImage = {
   alt: string;

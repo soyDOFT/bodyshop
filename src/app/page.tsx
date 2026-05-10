@@ -1,11 +1,15 @@
-import { Container } from 'src/components/ui/Container/Container';
-import { HeroCarousel } from 'src/components/hero/HeroCarousel/HeroCarousel';
-import { ServiceCards } from 'src/components/sections/ServiceCards/ServiceCards';
-import { FeatureCards } from 'src/components/sections/FeatureCards/FeatureCards';
-import { ServiceAreasList } from 'src/components/sections/ServiceAreasList/ServiceAreasList';
-import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
-import { SITE_META } from 'src/data/siteMeta';
 import styles from './page.module.css';
+
+// components
+import { Container } from 'src/components/ui/Container/Container';
+import { FeatureCards } from 'src/components/sections/FeatureCards/FeatureCards';
+import { HeroCarousel } from 'src/components/hero/HeroCarousel/HeroCarousel';
+import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
+import { ServiceAreasList } from 'src/components/sections/ServiceAreasList/ServiceAreasList';
+import { ServiceCards } from 'src/components/sections/ServiceCards/ServiceCards';
+
+// data
+import { SITE_META } from 'src/data/siteMeta';
 
 export default function HomePage() {
   return (

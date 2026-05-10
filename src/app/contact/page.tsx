@@ -1,11 +1,17 @@
+import styles from './page.module.css';
+
+// next
 import type { Metadata } from 'next';
+
+// components
+import { Icon } from 'src/components/ui/Icon/Icon';
 import { PageHero } from 'src/components/layout/PageHero/PageHero';
 import { PageWithAside } from 'src/components/layout/PageWithAside/PageWithAside';
-import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
 import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
-import { Icon } from 'src/components/ui/Icon/Icon';
+import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
+
+// data
 import { SITE_META } from 'src/data/siteMeta';
-import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Contact Us',

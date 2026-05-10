@@ -1,4 +1,7 @@
+// next
 import type { MetadataRoute } from 'next';
+
+// data
 import { SERVICE_AREAS } from 'src/data/serviceAreas';
 
 const STATIC_PATHS = [

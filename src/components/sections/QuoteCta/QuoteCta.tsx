@@ -1,7 +1,9 @@
-import { Container } from 'src/components/ui/Container/Container';
-import { Button } from 'src/components/ui/Button/Button';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 import styles from './QuoteCta.module.css';
+
+// components
+import { Button } from 'src/components/ui/Button/Button';
+import { Container } from 'src/components/ui/Container/Container';
+import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 
 type QuoteCtaProps = {
   heading?: string;

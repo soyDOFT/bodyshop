@@ -1,5 +1,7 @@
-import { Container } from 'src/components/ui/Container/Container';
 import styles from './Aside.module.css';
+
+// components
+import { Container } from 'src/components/ui/Container/Container';
 
 type AsideProps = {
   children: React.ReactNode;

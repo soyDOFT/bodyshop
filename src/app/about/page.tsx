@@ -1,9 +1,14 @@
+// next
 import type { Metadata } from 'next';
+
+// components
 import { PageHero } from 'src/components/layout/PageHero/PageHero';
 import { PageWithAside } from 'src/components/layout/PageWithAside/PageWithAside';
-import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
-import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
 import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
+import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
+
+// data
 import { SITE_META } from 'src/data/siteMeta';
 
 export const metadata: Metadata = {

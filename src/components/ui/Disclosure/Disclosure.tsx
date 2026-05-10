@@ -1,9 +1,12 @@
 'use client';
-
-import { useId, useState } from 'react';
-import clsx from 'clsx';
-import { Icon } from 'src/components/ui/Icon/Icon';
 import styles from './Disclosure.module.css';
+import { useId, useState } from 'react';
+
+// helpers
+import clsx from 'clsx';
+
+// components
+import { Icon } from 'src/components/ui/Icon/Icon';
 
 type DisclosureProps = {
   summary: React.ReactNode;
