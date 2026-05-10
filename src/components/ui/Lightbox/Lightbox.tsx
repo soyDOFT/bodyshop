@@ -41,32 +41,32 @@ export function Lightbox({ images, openIndex, onClose, onPrev, onNext }: Lightbo
 
   useEffect(() => {
     if (!open) return;
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
+    function handleArrowKeys(event: KeyboardEvent) {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
         onPrev();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
         onNext();
       }
     }
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.addEventListener('keydown', handleArrowKeys);
+    return () => document.removeEventListener('keydown', handleArrowKeys);
   }, [open, onPrev, onNext]);
 
-  const current = open ? images[openIndex!] : null;
+  const currentImage = open ? images[openIndex!] : null;
 
   return (
     <dialog
       ref={dialogRef}
       className={styles.dialog}
       onClose={onClose}
-      onClick={(e) => {
-        if (e.target === dialogRef.current) onClose();
+      onClick={(event) => {
+        if (event.target === dialogRef.current) onClose();
       }}
-      aria-label={current ? `Photo ${openIndex! + 1} of ${images.length}: ${current.alt}` : 'Photo viewer'}
+      aria-label={currentImage ? `Photo ${openIndex! + 1} of ${images.length}: ${currentImage.alt}` : 'Photo viewer'}
     >
-      {current && (
+      {currentImage && (
         <div className={styles.inner}>
           <div className={styles.toolbar}>
             <span className={styles.counter} aria-live="polite">
@@ -94,12 +94,12 @@ export function Lightbox({ images, openIndex, onClose, onPrev, onNext }: Lightbo
             <figure className={styles.figure}>
               <div className={styles.imageWrap}>
                 <Placeholder
-                  alt={current.alt}
+                  alt={currentImage.alt}
                   fill
                   sizes="(max-width: 768px) 90vw, 80vw"
                 />
               </div>
-              <figcaption className={styles.caption}>{current.alt}</figcaption>
+              <figcaption className={styles.caption}>{currentImage.alt}</figcaption>
             </figure>
             <button
               type="button"

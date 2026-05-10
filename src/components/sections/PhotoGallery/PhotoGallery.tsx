@@ -13,22 +13,22 @@ type PhotoGalleryProps = {
 };
 
 export function PhotoGallery({ count = 20, altPrefix = 'Body shop project photo' }: PhotoGalleryProps) {
-  const images: LightboxImage[] = Array.from({ length: count }, (_, i) => ({
-    alt: `${altPrefix} ${i + 1}`,
+  const images: LightboxImage[] = Array.from({ length: count }, (_, imageIndex) => ({
+    alt: `${altPrefix} ${imageIndex + 1}`,
   }));
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  function open(idx: number) {
-    setOpenIndex(idx);
+  function open(imageIndex: number) {
+    setOpenIndex(imageIndex);
   }
   function close() {
     setOpenIndex(null);
   }
   function prev() {
-    setOpenIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length));
+    setOpenIndex((current) => (current === null ? null : (current - 1 + images.length) % images.length));
   }
   function next() {
-    setOpenIndex((i) => (i === null ? null : (i + 1) % images.length));
+    setOpenIndex((current) => (current === null ? null : (current + 1) % images.length));
   }
 
   return (
@@ -38,13 +38,13 @@ export function PhotoGallery({ count = 20, altPrefix = 'Body shop project photo'
           Photo gallery
         </h2>
         <ul className={styles.grid}>
-          {images.map((img, idx) => (
-            <li key={idx} className={styles.cell}>
+          {images.map((image, imageIndex) => (
+            <li key={imageIndex} className={styles.cell}>
               <button
                 type="button"
                 className={styles.tile}
-                onClick={() => open(idx)}
-                aria-label={`Open ${img.alt} (photo ${idx + 1} of ${images.length})`}
+                onClick={() => open(imageIndex)}
+                aria-label={`Open ${image.alt} (photo ${imageIndex + 1} of ${images.length})`}
               >
                 <span className={styles.imageWrap}>
                   <Placeholder

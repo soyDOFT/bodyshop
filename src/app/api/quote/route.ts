@@ -93,9 +93,9 @@ export async function POST(request: Request) {
   ].filter(Boolean);
   const text = textLines.join('\n');
 
-  const escape = (s: string) =>
-    s.replace(/[&<>"']/g, (ch) =>
-      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]!,
+  const escape = (value: string) =>
+    value.replace(/[&<>"']/g, (char) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!,
     );
 
   const html = `

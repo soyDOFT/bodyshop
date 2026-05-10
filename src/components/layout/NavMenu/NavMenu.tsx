@@ -36,33 +36,33 @@ export function NavMenu({ links, quoteLink, open, onClose, triggerId }: NavMenuP
 
   useEffect(() => {
     if (!open) return;
-    const id = requestAnimationFrame(() => closeBtnRef.current?.focus());
+    const focusFrameId = requestAnimationFrame(() => closeBtnRef.current?.focus());
 
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        e.stopPropagation();
+    function handleKeydown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        event.stopPropagation();
         onClose();
       }
-      if (e.key === 'Tab') {
+      if (event.key === 'Tab') {
         const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled])',
         );
         if (!focusables || focusables.length === 0) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
+        const firstFocusable = focusables[0];
+        const lastFocusable = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === firstFocusable) {
+          event.preventDefault();
+          lastFocusable.focus();
+        } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+          event.preventDefault();
+          firstFocusable.focus();
         }
       }
     }
-    document.addEventListener('keydown', onKey);
+    document.addEventListener('keydown', handleKeydown);
     return () => {
-      cancelAnimationFrame(id);
-      document.removeEventListener('keydown', onKey);
+      cancelAnimationFrame(focusFrameId);
+      document.removeEventListener('keydown', handleKeydown);
     };
   }, [open, onClose]);
 

@@ -25,14 +25,14 @@ export default function PrivacyPolicyPage() {
       />
       <section className={styles.section}>
         <Container width="narrow" className={styles.body}>
-          {PRIVACY_INTRO.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
+          {PRIVACY_INTRO.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
           ))}
-          {PRIVACY_SECTIONS.map((s) => (
-            <article key={s.heading}>
-              <h2>{s.heading}</h2>
-              {s.body.map((p) => (
-                <p key={p.slice(0, 40)}>{p}</p>
+          {PRIVACY_SECTIONS.map((section) => (
+            <article key={section.heading}>
+              <h2>{section.heading}</h2>
+              {section.body.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
             </article>
           ))}

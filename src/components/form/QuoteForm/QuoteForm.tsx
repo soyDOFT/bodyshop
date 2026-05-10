@@ -59,12 +59,12 @@ export function QuoteForm({
 
     const parsed = quoteSchema.safeParse(values);
     if (!parsed.success) {
-      const next: FieldErrors = {};
+      const nextErrors: FieldErrors = {};
       for (const issue of parsed.error.issues) {
         const key = issue.path[0] as keyof QuoteFormValues | undefined;
-        if (key && !next[key]) next[key] = issue.message;
+        if (key && !nextErrors[key]) nextErrors[key] = issue.message;
       }
-      setErrors(next);
+      setErrors(nextErrors);
       setStatus('error');
       setStatusMessage('Please fix the highlighted fields and try again.');
       return;
@@ -74,24 +74,24 @@ export function QuoteForm({
     setStatusMessage('Sending your request…');
 
     try {
-      const res = await fetch('/api/quote', {
+      const response = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(parsed.data),
       });
-      const data = (await res.json().catch(() => ({}))) as {
+      const result = (await response.json().catch(() => ({}))) as {
         ok?: boolean;
         error?: string;
         simulated?: boolean;
       };
 
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error ?? 'Something went wrong sending your request.');
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error ?? 'Something went wrong sending your request.');
       }
 
       setStatus('success');
       setStatusMessage(
-        data.simulated
+        result.simulated
           ? "Thanks! Your message was received (email delivery isn't configured yet)."
           : "Thanks! We've received your request and will be in touch shortly.",
       );

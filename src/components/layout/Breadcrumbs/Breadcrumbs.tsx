@@ -21,10 +21,10 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className={styles.nav}>
       <ol className={styles.list}>
-        {items.map((item, idx) => {
-          const isLast = idx === items.length - 1;
+        {items.map((item, itemIndex) => {
+          const isLast = itemIndex === items.length - 1;
           return (
-            <li key={`${item.label}-${idx}`} className={styles.item}>
+            <li key={`${item.label}-${itemIndex}`} className={styles.item}>
               {item.href && !isLast ? (
                 <Link href={item.href} className={styles.link}>
                   {item.label}

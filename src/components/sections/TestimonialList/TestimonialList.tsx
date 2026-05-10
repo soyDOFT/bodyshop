@@ -15,22 +15,28 @@ export function TestimonialList() {
           Customer testimonials
         </h2>
         <ul className={styles.list}>
-          {TESTIMONIALS.map((t) => {
-            const expandable = typeof t.expandableAt === 'number' && t.body.length > t.expandableAt;
-            const summary = expandable ? `${t.body.slice(0, t.expandableAt!).trim()}…` : t.body;
-            const tail = expandable ? t.body.slice(t.expandableAt!).trim() : '';
+          {TESTIMONIALS.map((testimonial) => {
+            const expandable =
+              typeof testimonial.expandableAt === 'number' &&
+              testimonial.body.length > testimonial.expandableAt;
+            const summary = expandable
+              ? `${testimonial.body.slice(0, testimonial.expandableAt!).trim()}…`
+              : testimonial.body;
+            const expandedBody = expandable
+              ? testimonial.body.slice(testimonial.expandableAt!).trim()
+              : '';
 
             return (
-              <li key={`${t.name}-${t.area}`} className={styles.card}>
+              <li key={`${testimonial.name}-${testimonial.area}`} className={styles.card}>
                 <header className={styles.head}>
-                  <h3 className={styles.name}>{t.name}</h3>
-                  <p className={styles.area}>{t.area}</p>
+                  <h3 className={styles.name}>{testimonial.name}</h3>
+                  <p className={styles.area}>{testimonial.area}</p>
                 </header>
                 <blockquote className={styles.quote}>
                   <p>{`“${summary}`}{!expandable && '”'}</p>
                   {expandable ? (
                     <Disclosure summary="Show more" expandedSummary="Show less">
-                      <p>{tail}”</p>
+                      <p>{expandedBody}”</p>
                     </Disclosure>
                   ) : null}
                 </blockquote>
