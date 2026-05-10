@@ -20,6 +20,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
+    <>
     <header className={styles.header}>
       <Container className={styles.bar}>
         <Link href="/" className={styles.brand} aria-label={`${SITE_META.name} home`}>
@@ -73,14 +74,15 @@ export function Header() {
           </button>
         </div>
       </Container>
-
-      <NavMenu
-        links={PRIMARY_NAV}
-        quoteLink={QUOTE_LINK}
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-        triggerId={TRIGGER_ID}
-      />
     </header>
+
+    <NavMenu
+      links={PRIMARY_NAV}
+      quoteLink={QUOTE_LINK}
+      open={menuOpen}
+      onClose={() => setMenuOpen(false)}
+      triggerId={TRIGGER_ID}
+    />
+    </>
   );
 }

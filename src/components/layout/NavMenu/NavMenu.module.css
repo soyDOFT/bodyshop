@@ -1,11 +1,18 @@
-.backdrop {
+.overlay {
   position: fixed;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+  z-index: 90;
+}
+
+.backdrop {
+  position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition-base);
-  z-index: 90;
 }
 
 .backdropOpen {
@@ -14,7 +21,7 @@
 }
 
 .drawer {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   height: 100dvh;

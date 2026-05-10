@@ -86,7 +86,6 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
   color: var(--color-text);
   background: var(--color-bg);
   font-family: var(--font-sans);

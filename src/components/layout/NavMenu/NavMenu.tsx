@@ -58,7 +58,7 @@ export function NavMenu({ links, quoteLink, open, onClose, triggerId }: NavMenuP
   }, [open, onClose]);
 
   return (
-    <>
+    <div className={styles.overlay}>
       <div
         className={clsx(styles.backdrop, open && styles.backdropOpen)}
         onClick={onClose}
@@ -112,6 +112,6 @@ export function NavMenu({ links, quoteLink, open, onClose, triggerId }: NavMenuP
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
