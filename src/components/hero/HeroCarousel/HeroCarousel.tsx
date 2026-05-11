@@ -7,6 +7,7 @@ import clsx from 'clsx';
 
 // hooks
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 // components
 import { Button } from 'src/components/ui/Button/Button';
@@ -19,27 +20,29 @@ import { VisuallyHidden } from 'src/components/ui/VisuallyHidden/VisuallyHidden'
 import { HERO_SLIDES } from 'src/data/services';
 
 export function HeroCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [Autoplay({ delay: 5000, stopOnFocusIn: true, playOnInit: true })]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const total = HERO_SLIDES.length;
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const handler = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on('select', handler);
-    emblaApi.on('reInit', handler);
-    emblaApi.on('init', handler);
-    return () => {
-      emblaApi.off('select', handler);
-      emblaApi.off('reInit', handler);
-      emblaApi.off('init', handler);
-    };
-  }, [emblaApi]);
+  const totalSlides = HERO_SLIDES.length;
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((idx: number) => emblaApi?.scrollTo(idx), [emblaApi]);
+  const scrollTo = useCallback((slideIndex: number) => emblaApi?.scrollTo(slideIndex), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const syncSelectedIndex = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', syncSelectedIndex);
+    emblaApi.on('reInit', syncSelectedIndex);
+    emblaApi.on('init', syncSelectedIndex);
+
+    return () => {
+      // cleanup event listeners on unmount
+      emblaApi.off('select', syncSelectedIndex);
+      emblaApi.off('reInit', syncSelectedIndex);
+      emblaApi.off('init', syncSelectedIndex);
+    };
+  }, [emblaApi]);
 
   return (
     <section
@@ -50,17 +53,17 @@ export function HeroCarousel() {
     >
       <div className={styles.viewport} ref={emblaRef}>
         <div className={styles.track}>
-          {HERO_SLIDES.map((slide, i) => (
+          {HERO_SLIDES.map((slide, slideIndex) => (
             <article
               key={slide.title}
               className={styles.slide}
               role="group"
               aria-roledescription="slide"
-              aria-label={`Slide ${i + 1} of ${total}: ${slide.title}`}
-              aria-hidden={i !== selectedIndex || undefined}
+              aria-label={`Slide ${slideIndex + 1} of ${totalSlides}: ${slide.title}`}
+              aria-hidden={slideIndex !== selectedIndex || undefined}
             >
               <div className={styles.media}>
-                <Placeholder decorative fill priority={i === 0} />
+                <Placeholder decorative fill priority={slideIndex === 0} />
               </div>
               <div className={styles.overlay} aria-hidden />
               <Container className={styles.content}>
@@ -86,16 +89,16 @@ export function HeroCarousel() {
           <Icon name="chevron-left" size={24} />
         </button>
         <ul className={styles.dots}>
-          {HERO_SLIDES.map((slide, i) => (
+          {HERO_SLIDES.map((slide, slideIndex) => (
             <li key={slide.title}>
               <button
                 type="button"
-                className={clsx(styles.dot, i === selectedIndex && styles.dotActive)}
-                onClick={() => scrollTo(i)}
-                aria-current={i === selectedIndex || undefined}
-                aria-label={`Go to slide ${i + 1}`}
+                className={clsx(styles.dot, slideIndex === selectedIndex && styles.dotActive)}
+                onClick={() => scrollTo(slideIndex)}
+                aria-current={slideIndex === selectedIndex || undefined}
+                aria-label={`Go to slide ${slideIndex + 1}`}
               >
-                <VisuallyHidden>Slide {i + 1}</VisuallyHidden>
+                <VisuallyHidden>Slide {slideIndex + 1}</VisuallyHidden>
               </button>
             </li>
           ))}
