@@ -2,7 +2,6 @@
 import { NextResponse } from 'next/server';
 
 // helpers
-import nodemailer from 'nodemailer';
 import { quoteSchema } from 'src/components/form/quoteSchema';
 
 // data
@@ -11,30 +10,15 @@ import { SITE_META } from 'src/data/siteMeta';
 export const runtime = 'nodejs';
 
 type EnvConfig = {
-  host: string;
-  port: number;
-  secure: boolean;
-  user: string;
-  password: string;
-  to: string;
-  from: string;
+  botToken: string;
+  chatId: string;
 };
 
 function readEnv(): EnvConfig | null {
-  const user = process.env.SMTP_USER;
-  const password = process.env.SMTP_PASSWORD;
-  if (!user || !password) return null;
-
-  const port = Number(process.env.SMTP_PORT ?? 465);
-  return {
-    host: process.env.SMTP_HOST ?? 'smtp.gmail.com',
-    port: Number.isFinite(port) ? port : 465,
-    secure: (process.env.SMTP_SECURE ?? 'true').toLowerCase() !== 'false',
-    user,
-    password,
-    to: process.env.QUOTE_TO ?? user,
-    from: process.env.QUOTE_FROM ?? user,
-  };
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!botToken || !chatId) return null;
+  return { botToken, chatId };
 }
 
 export async function POST(request: Request) {
@@ -66,63 +50,59 @@ export async function POST(request: Request) {
   const env = readEnv();
   if (!env) {
     console.warn(
-      '[api/quote] SMTP_USER/SMTP_PASSWORD not set — running in simulated mode. ' +
-        'Set the env vars to actually send email.',
+      '[api/quote] TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID not set — running in simulated mode. ' +
+        'Set the env vars to actually send Telegram notifications.',
     );
     return NextResponse.json({ ok: true, simulated: true });
   }
-
-  const transport = nodemailer.createTransport({
-    host: env.host,
-    port: env.port,
-    secure: env.secure,
-    auth: { user: env.user, pass: env.password },
-  });
-
-  const subject = `New quote request — ${name}`;
-  const textLines = [
-    `New quote request from the ${SITE_META.name} website.`,
-    '',
-    `Name:    ${name}`,
-    `Phone:   ${phone}`,
-    `Email:   ${email}`,
-    address ? `Address: ${address}` : null,
-    '',
-    'Request:',
-    requestBody && requestBody.length > 0 ? requestBody : '(no message)',
-  ].filter(Boolean);
-  const text = textLines.join('\n');
 
   const escape = (value: string) =>
     value.replace(/[&<>"']/g, (char) =>
       ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!,
     );
 
-  const html = `
-    <h2 style="margin:0 0 12px;font-family:system-ui,sans-serif">New quote request</h2>
-    <p style="margin:0 0 16px;font-family:system-ui,sans-serif;color:#444">From the ${escape(SITE_META.name)} website.</p>
-    <table style="border-collapse:collapse;font-family:system-ui,sans-serif;font-size:14px">
-      <tr><td style="padding:4px 12px 4px 0;color:#666">Name</td><td>${escape(name)}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;color:#666">Phone</td><td>${escape(phone)}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${escape(email)}">${escape(email)}</a></td></tr>
-      ${address ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Address</td><td>${escape(address)}</td></tr>` : ''}
-    </table>
-    <h3 style="margin:24px 0 8px;font-family:system-ui,sans-serif">Request</h3>
-    <p style="white-space:pre-wrap;font-family:system-ui,sans-serif;line-height:1.55;color:#222">${escape(requestBody && requestBody.length > 0 ? requestBody : '(no message)')}</p>
-  `.trim();
+  const phoneHref = phone.replace(/[^\d+]/g, '');
+  const messageBody = requestBody && requestBody.length > 0 ? requestBody : '(no message)';
+
+  const lines = [
+    `<b>New quote request</b>`,
+    `From the ${escape(SITE_META.name)} website.`,
+    ``,
+    `<b>Name:</b> ${escape(name)}`,
+    `<b>Phone:</b> <a href="tel:${escape(phoneHref)}">${escape(phone)}</a>`,
+    `<b>Email:</b> <a href="mailto:${escape(email)}">${escape(email)}</a>`,
+    address ? `<b>Address:</b> ${escape(address)}` : null,
+    ``,
+    `<b>Request:</b>`,
+    escape(messageBody),
+  ].filter((line): line is string => line !== null);
+
+  const text = lines.join('\n');
 
   try {
-    await transport.sendMail({
-      from: env.from,
-      to: env.to,
-      replyTo: email,
-      subject,
-      text,
-      html,
+    const res = await fetch(`https://api.telegram.org/bot${env.botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: env.chatId,
+        text,
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+      }),
     });
+
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      console.error('[api/quote] telegram sendMessage failed', res.status, body);
+      return NextResponse.json(
+        { ok: false, error: 'We could not send your request right now. Please call us instead.' },
+        { status: 502 },
+      );
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error('[api/quote] sendMail failed', err);
+    console.error('[api/quote] telegram sendMessage failed', err);
     return NextResponse.json(
       { ok: false, error: 'We could not send your request right now. Please call us instead.' },
       { status: 502 },
