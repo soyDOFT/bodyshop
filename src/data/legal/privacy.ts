@@ -6,7 +6,7 @@ export type LegalSection = {
 export const PRIVACY_INTRO = [
   'Our business including our affiliates (collectively "we," "our," "us," and "the Company") takes your privacy seriously. This Policy describes how we collect, use, share, and protect information obtained from customers, users, and visitors to our website. By using our website, you have agreed and are additionally subject to any additional Terms of Service which incorporate this Policy by reference.',
   'This Policy describes:',
-  '• How we collect — and how you may provide — information through our website, including the domain, any mobile applications, call-tracking lines, and the customer/user dashboard or portal (collectively, the "Sites").',
+  '• How we collect information, and how you may provide it, through our website, including the domain, any mobile applications, call-tracking lines, and the customer/user dashboard or portal (collectively, the "Sites").',
   '• How we use and protect information.',
   '• With whom we may share information.',
   '• The types of information we collect.',

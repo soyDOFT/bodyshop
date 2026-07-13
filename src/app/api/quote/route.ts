@@ -14,6 +14,7 @@ type EnvConfig = {
   chatId: string;
 };
 
+/** Read an environment variable, returning undefined when it is unset or blank. */
 function readEnv(): EnvConfig | null {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
@@ -21,6 +22,7 @@ function readEnv(): EnvConfig | null {
   return { botToken, chatId };
 }
 
+/** Validate a quote request and relay it to Telegram. */
 export async function POST(request: Request) {
   let json: unknown;
   try {
@@ -50,7 +52,7 @@ export async function POST(request: Request) {
   const env = readEnv();
   if (!env) {
     console.warn(
-      '[api/quote] TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID not set — running in simulated mode. ' +
+      '[api/quote] TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID not set, running in simulated mode. ' +
         'Set the env vars to actually send Telegram notifications.',
     );
     return NextResponse.json({ ok: true, simulated: true });

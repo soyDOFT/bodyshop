@@ -31,10 +31,11 @@ type QuoteFormProps = {
   description?: string;
 };
 
+/** Collect a quote request and submit it to the API. */
 export function QuoteForm({
   variant = 'card',
   heading = 'Request a Quote',
-  description = 'Tell us a little about your project — we usually get back within one business day.',
+  description = 'Tell us a little about your project and we usually get back within one business day.',
 }: QuoteFormProps) {
   const formId = useId();
   const [values, setValues] = useState<QuoteFormValues>(EMPTY);
@@ -42,6 +43,7 @@ export function QuoteForm({
   const [status, setStatus] = useState<Status>('idle');
   const [statusMessage, setStatusMessage] = useState('');
 
+  /** Set one field and clear its error. */
   function update<K extends keyof QuoteFormValues>(key: K, value: QuoteFormValues[K]) {
     setValues((v) => ({ ...v, [key]: value }));
     if (errors[key]) {
@@ -53,6 +55,7 @@ export function QuoteForm({
     }
   }
 
+  /** Validate the form, post it, and report the outcome. */
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === 'submitting') return;
@@ -114,7 +117,7 @@ export function QuoteForm({
         <h2 id={`${formId}-heading`} className={styles.heading}>
           {heading}
         </h2>
-        {description && <p className={styles.description}>{description}</p>}
+        {description ? <p className={styles.description}>{description}</p> : null}
       </header>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
@@ -155,7 +158,7 @@ export function QuoteForm({
           label="Address"
           name="address"
           autoComplete="street-address"
-          hint="Optional — helps us estimate pickup or delivery."
+          hint="Optional. Helps us estimate pickup or delivery."
           value={values.address ?? ''}
           onChange={(e) => update('address', e.currentTarget.value)}
           error={errors.address}
@@ -166,7 +169,7 @@ export function QuoteForm({
           name="request"
           multiline
           rows={5}
-          hint="Optional. Describe the damage or project — make/model if you'd like."
+          hint="Optional. Describe the damage or project, including the make and model if you like."
           value={values.request ?? ''}
           onChange={(e) => update('request', e.currentTarget.value)}
           error={errors.request}
@@ -214,12 +217,12 @@ export function QuoteForm({
                 : styles.statusHidden
           }
         >
-          {status !== 'idle' && status !== 'submitting' && statusMessage && (
+          {status !== 'idle' && status !== 'submitting' && statusMessage ? (
             <span className={styles.statusInner}>
               <Icon name={status === 'success' ? 'check' : 'close'} size={18} />
               {statusMessage}
             </span>
-          )}
+          ) : null}
         </div>
       </form>
     </section>

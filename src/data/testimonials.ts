@@ -26,7 +26,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: 'Doug T.',
     area: 'Denver',
-    body: 'Walter takes care of all my cars, especially when my kids were just learning to drive. You can bet Exclusive Body Shop is where I will go to when the next bump-up happens. He also does custom gas tanks for cycles — works of art.',
+    body: 'Walter takes care of all my cars, especially when my kids were just learning to drive. You can bet Exclusive Body Shop is where I will go to when the next bump-up happens. He also does custom gas tanks for cycles, and they are works of art.',
   },
   {
     name: 'Kathleen H.',
