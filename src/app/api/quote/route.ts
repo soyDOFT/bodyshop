@@ -14,7 +14,7 @@ type EnvConfig = {
   chatId: string;
 };
 
-/** Read an environment variable, returning undefined when it is unset or blank. */
+/** Read the Telegram credentials, returning null unless both are set. */
 function readEnv(): EnvConfig | null {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
