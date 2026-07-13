@@ -13,34 +13,60 @@ import Autoplay from 'embla-carousel-autoplay';
 import { Button } from 'src/components/ui/Button/Button';
 import { Container } from 'src/components/ui/Container/Container';
 import { Icon } from 'src/components/ui/Icon/Icon';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+import { MediaImage } from 'src/components/media/MediaImage/MediaImage';
 import { VisuallyHidden } from 'src/components/ui/VisuallyHidden/VisuallyHidden';
 
 // data
 import { HERO_SLIDES } from 'src/data/services';
 
+// Keep the carousel advancing after someone uses the controls instead of freezing for good.
+const AUTOPLAY_OPTIONS = {
+  delay: 5000,
+  stopOnFocusIn: true,
+  playOnInit: true,
+  stopOnInteraction: false,
+};
+
+const SYNC_EVENTS = ['select', 'reInit', 'init'] as const;
+
+/** Rotate the home page hero slides, with arrows and dots. */
 export function HeroCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [Autoplay({ delay: 5000, stopOnFocusIn: true, playOnInit: true })]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [
+    Autoplay(AUTOPLAY_OPTIONS),
+  ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  type EmblaApi = NonNullable<typeof emblaApi>;
 
   const totalSlides = HERO_SLIDES.length;
 
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((slideIndex: number) => emblaApi?.scrollTo(slideIndex), [emblaApi]);
+  // Reset autoplay on every manual move, since it only restarts its countdown on pointer
+  // interaction and would otherwise fire the pending tick right after an arrow or dot click.
+  const navigate = useCallback(
+    (move: (api: EmblaApi) => void) => {
+      if (!emblaApi) return;
+      move(emblaApi);
+      emblaApi.plugins().autoplay?.reset();
+    },
+    [emblaApi],
+  );
 
+  const scrollPrev = useCallback(() => navigate((api) => api.scrollPrev()), [navigate]);
+  const scrollNext = useCallback(() => navigate((api) => api.scrollNext()), [navigate]);
+  const scrollTo = useCallback(
+    (slideIndex: number) => navigate((api) => api.scrollTo(slideIndex)),
+    [navigate],
+  );
+
+  // Mirror the carousel position into state so the dots can show which slide is current.
   useEffect(() => {
     if (!emblaApi) return;
+
     const syncSelectedIndex = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on('select', syncSelectedIndex);
-    emblaApi.on('reInit', syncSelectedIndex);
-    emblaApi.on('init', syncSelectedIndex);
+    SYNC_EVENTS.forEach((event) => emblaApi.on(event, syncSelectedIndex));
 
     return () => {
-      // cleanup event listeners on unmount
-      emblaApi.off('select', syncSelectedIndex);
-      emblaApi.off('reInit', syncSelectedIndex);
-      emblaApi.off('init', syncSelectedIndex);
+      SYNC_EVENTS.forEach((event) => emblaApi.off(event, syncSelectedIndex));
     };
   }, [emblaApi]);
 
@@ -63,7 +89,13 @@ export function HeroCarousel() {
               aria-hidden={slideIndex !== selectedIndex || undefined}
             >
               <div className={styles.media}>
-                <Placeholder decorative fill priority={slideIndex === 0} />
+                <MediaImage
+                  item={slide.media}
+                  fill
+                  decorative
+                  eager={slideIndex === 0}
+                  sizes="100vw"
+                />
               </div>
               <div className={styles.overlay} aria-hidden />
               <Container className={styles.content}>
