@@ -13,8 +13,8 @@ import clsx from 'clsx';
 import { Button } from 'src/components/ui/Button/Button';
 import { Container } from 'src/components/ui/Container/Container';
 import { Icon } from 'src/components/ui/Icon/Icon';
+import { Logo } from 'src/components/ui/Logo/Logo';
 import { NavMenu } from 'src/components/layout/NavMenu/NavMenu';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 
 // data
 import { PRIMARY_NAV, QUOTE_LINK } from 'src/data/navigation';
@@ -22,6 +22,7 @@ import { SITE_META } from 'src/data/siteMeta';
 
 const TRIGGER_ID = 'primary-nav-trigger';
 
+/** Render the site header and its mobile menu trigger. */
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -32,12 +33,7 @@ export function Header() {
       <Container className={styles.bar}>
         <Link href="/" className={styles.brand} aria-label={`${SITE_META.name} home`}>
           <span className={styles.logo}>
-            <Placeholder
-              decorative
-              width={48}
-              height={48}
-              rounded="sm"
-            />
+            <Logo idPrefix="header-logo" size={48} />
           </span>
           <span className={styles.brandText}>
             <span className={styles.brandName}>{SITE_META.name}</span>

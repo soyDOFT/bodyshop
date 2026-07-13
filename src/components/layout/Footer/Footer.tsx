@@ -6,19 +6,20 @@ import Link from 'next/link';
 // components
 import { Container } from 'src/components/ui/Container/Container';
 import { Icon } from 'src/components/ui/Icon/Icon';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+import { Logo } from 'src/components/ui/Logo/Logo';
 
 // data
 import { FOOTER_NAV } from 'src/data/navigation';
 import { SITE_META } from 'src/data/siteMeta';
 
+/** Render the site footer. */
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <Container className={styles.grid}>
         <div className={styles.brandCol}>
           <Link href="/" className={styles.brand} aria-label={`${SITE_META.name} home`}>
-            <Placeholder decorative width={56} height={56} rounded="sm" />
+            <Logo idPrefix="footer-logo" size={56} />
             <span className={styles.brandName}>{SITE_META.name}</span>
           </Link>
           <p className={styles.tagline}>{SITE_META.tagline}</p>
@@ -52,15 +53,6 @@ export function Footer() {
             </a>
           </address>
           <ul className={styles.socials} aria-label="Social media">
-            <li>
-              <a
-                href={SITE_META.socials.facebook}
-                className={styles.socialLink}
-                aria-label="Visit our Facebook page"
-              >
-                <Icon name="facebook" size={20} />
-              </a>
-            </li>
             <li>
               <a
                 href={SITE_META.socials.yelp}
