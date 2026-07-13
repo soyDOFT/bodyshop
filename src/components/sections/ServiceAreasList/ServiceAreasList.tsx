@@ -18,6 +18,7 @@ type ServiceAreasListProps = {
   intro?: string;
 };
 
+/** List the neighbourhoods the shop serves. */
 export function ServiceAreasList({
   variant = 'banded',
   heading = 'Our Service Areas',
@@ -33,7 +34,7 @@ export function ServiceAreasList({
           <h2 id="service-areas-heading" className={styles.heading}>
             {heading}
           </h2>
-          {intro && <p className={styles.intro}>{intro}</p>}
+          {intro ? <p className={styles.intro}>{intro}</p> : null}
         </div>
         <ul className={styles.grid}>
           {SERVICE_AREAS.map((area) => (

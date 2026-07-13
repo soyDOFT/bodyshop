@@ -27,6 +27,7 @@ type ButtonAsLink = CommonProps & {
 
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
+/** Render a button, or a link that looks like one. */
 export function Button({
   variant = 'primary',
   size = 'md',

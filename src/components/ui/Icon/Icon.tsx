@@ -65,6 +65,7 @@ type IconProps = {
   title?: string;
 };
 
+/** Render a named icon, hidden from assistive tech unless given a title. */
 export function Icon({ name, size = 20, className, title }: IconProps) {
   const Component = ICONS[name];
   return (

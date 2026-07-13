@@ -9,6 +9,7 @@ type PageWithAsideProps = {
   asideLabel?: string;
 };
 
+/** Lay out page prose beside a sticky aside. */
 export function PageWithAside({ children, aside, asideLabel = 'Request a quote' }: PageWithAsideProps) {
   return (
     <section className={styles.section}>

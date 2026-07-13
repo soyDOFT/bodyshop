@@ -45,6 +45,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/** Wrap every page in the shared header, footer, and fonts. */
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -29,6 +29,7 @@ export const SERVICE_AREAS: readonly ServiceArea[] = [
   { slug: 'stonehaven', name: 'Stonehaven' },
 ] as const;
 
+/** Find a service area by slug, or undefined when the slug is unknown. */
 export function findServiceArea(slug: string): ServiceArea | undefined {
   return SERVICE_AREAS.find((area) => area.slug === slug);
 }

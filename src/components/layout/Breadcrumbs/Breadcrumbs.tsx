@@ -15,6 +15,7 @@ type BreadcrumbsProps = {
   items: BreadcrumbItem[];
 };
 
+/** Show the trail back to the home page. */
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   if (items.length === 0) return null;
 
@@ -34,9 +35,9 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                   {item.label}
                 </span>
               )}
-              {!isLast && (
+              {!isLast ? (
                 <Icon name="chevron-right" size={14} className={styles.separator} />
-              )}
+              ) : null}
             </li>
           );
         })}

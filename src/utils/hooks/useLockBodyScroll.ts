@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 
+/** Freeze page scrolling while an overlay is open. */
 export function useLockBodyScroll(locked: boolean) {
   useEffect(() => {
     if (!locked) return;

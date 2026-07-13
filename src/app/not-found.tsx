@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Button } from 'src/components/ui/Button/Button';
 import { Container } from 'src/components/ui/Container/Container';
 
+/** Render the 404 page. */
 export default function NotFound() {
   return (
     <section className={styles.section}>

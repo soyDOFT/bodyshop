@@ -16,6 +16,7 @@ type DisclosureProps = {
   className?: string;
 };
 
+/** Toggle a block of content open and closed. */
 export function Disclosure({
   summary,
   expandedSummary,

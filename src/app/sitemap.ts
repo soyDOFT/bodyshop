@@ -17,6 +17,7 @@ const STATIC_PATHS = [
   '/terms',
 ];
 
+/** Build the sitemap from the static routes and service areas. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ?? '';
   const now = new Date();

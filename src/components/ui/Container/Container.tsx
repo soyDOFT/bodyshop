@@ -10,6 +10,7 @@ type ContainerProps = {
   className?: string;
 };
 
+/** Centre page content and cap its width. */
 export function Container({
   children,
   width = 'default',

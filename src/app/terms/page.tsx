@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description: 'Terms and conditions of use for our website.',
 };
 
+/** Render the Terms page. */
 export default function TermsPage() {
   return (
     <>

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description: 'How we collect, use, and protect information from visitors to our website.',
 };
 
+/** Render the Privacy Policy page. */
 export default function PrivacyPolicyPage() {
   return (
     <>

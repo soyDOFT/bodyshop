@@ -23,6 +23,7 @@ type TextareaFieldProps = CommonProps & {
 
 type FormFieldProps = InputFieldProps | TextareaFieldProps;
 
+/** Render a labelled input or textarea, wiring up its hint and error text. */
 export function FormField({
   id,
   label,
@@ -41,11 +42,11 @@ export function FormField({
     <div className={clsx(styles.field, className)}>
       <label htmlFor={id} className={styles.label}>
         {label}
-        {required && (
+        {required ? (
           <span className={styles.requiredMark} aria-hidden>
             *
           </span>
-        )}
+        ) : null}
       </label>
       {multiline ? (
         <textarea
@@ -67,16 +68,16 @@ export function FormField({
           {...(rest as Omit<InputFieldProps, keyof CommonProps | 'multiline'>)}
         />
       )}
-      {hint && !error && (
+      {hint && !error ? (
         <p id={hintId} className={styles.hint}>
           {hint}
         </p>
-      )}
-      {error && (
+      ) : null}
+      {error ? (
         <p id={errorId} className={styles.error}>
           {error}
         </p>
-      )}
+      ) : null}
     </div>
   );
 }
