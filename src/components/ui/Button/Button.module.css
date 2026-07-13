@@ -43,11 +43,11 @@
 
 /* Variants */
 .primary {
-  background: var(--color-accent);
-  color: var(--color-accent-contrast);
+  background: var(--color-cta);
+  color: var(--color-cta-contrast);
 }
 .primary:hover:not(:disabled) {
-  background: var(--color-accent-hover);
+  background: var(--color-cta-hover);
 }
 
 .secondary {
@@ -55,7 +55,7 @@
   color: var(--color-text-on-dark);
 }
 .secondary:hover:not(:disabled) {
-  background: #2a2a2a;
+  background: #1b2c3f;
 }
 
 .ghost {

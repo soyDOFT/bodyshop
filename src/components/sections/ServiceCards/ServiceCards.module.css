@@ -33,13 +33,20 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  opacity: 0.25;
 }
 
+/* Keep the top third light so the photo reads, then ramp up from 30% down where the text starts. */
 .cardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 20, 20, 0.4) 0%, rgba(20, 20, 20, 0.92) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 22, 34, 0.02) 0%,
+    rgba(11, 22, 34, 0.16) 24%,
+    rgba(11, 22, 34, 0.62) 48%,
+    rgba(11, 22, 34, 0.88) 74%,
+    rgba(11, 22, 34, 0.95) 100%
+  );
   z-index: -1;
 }
 
@@ -50,17 +57,20 @@
   gap: var(--space-3);
 }
 
+/* Give the type its own contrast, since the photo behind it varies shot to shot. */
 .cardEyebrow {
   font-size: var(--font-size-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
   font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .cardTitle {
   font-size: var(--font-size-2xl);
   letter-spacing: -0.01em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .cardTagline {
@@ -68,4 +78,5 @@
   line-height: var(--line-height-relaxed);
   font-size: var(--font-size-sm);
   margin-bottom: var(--space-2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }

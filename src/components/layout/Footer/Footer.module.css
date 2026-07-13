@@ -65,7 +65,7 @@
 }
 
 .link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
 }
 
 .address {
@@ -86,7 +86,7 @@
 }
 
 .contactLink:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-on-dark);
 }
 
 .socials {
@@ -107,9 +107,9 @@
 }
 
 .socialLink:hover {
-  background: var(--color-accent);
-  color: var(--color-accent-contrast);
-  border-color: var(--color-accent);
+  background: var(--color-cta);
+  color: var(--color-cta-contrast);
+  border-color: var(--color-cta);
 }
 
 .bottom {

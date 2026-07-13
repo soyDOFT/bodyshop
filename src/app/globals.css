@@ -1,18 +1,30 @@
 :root {
+  /* Ground the page in midnight to match the navy logo, and let teal be the single bright note. */
+  /* Every pairing below is checked against WCAG AA at 4.5:1. */
   --color-bg: #ffffff;
-  --color-surface: #f7f7f8;
-  --color-surface-strong: #1a1a1a;
-  --color-surface-subtle: #fafafa;
-  --color-text: #111111;
-  --color-text-muted: #555555;
-  --color-text-on-dark: #f5f5f5;
-  --color-text-on-dark-muted: #c9c9c9;
-  --color-border: #e5e5e5;
-  --color-border-strong: #d4d4d4;
-  --color-accent: #c79a3a;
-  --color-accent-hover: #b58527;
-  --color-accent-contrast: #1a1a1a;
-  --color-focus-ring: #2563eb;
+  --color-surface: #f2f6f8;
+  --color-surface-strong: #0b1622; /* midnight: footer, heroes, CTA bands */
+  --color-surface-subtle: #fafcfd;
+  --color-text: #0d1520;
+  --color-text-muted: #55636f;
+  --color-text-on-dark: #f2f6f8;
+  --color-text-on-dark-muted: #b6c7d1;
+  --color-border: #e2e9ee;
+  --color-border-strong: #c9d4dc;
+
+  /* Use this on light surfaces, since it clears 5:1 on white where the bright teal only manages 2.6:1. */
+  --color-accent: #0b7d72;
+  --color-accent-hover: #095f57;
+  --color-accent-contrast: #ffffff;
+  /* Same role on midnight, where the deep teal would disappear. 10.4:1. */
+  --color-accent-on-dark: #5fd6ca;
+
+  /* Reserve this for calls to action, and pair it with midnight text at 6.9:1 rather than white at 2.6:1. */
+  --color-cta: #00b3a4;
+  --color-cta-hover: #00c9b8;
+  --color-cta-contrast: #0b1622;
+
+  --color-focus-ring: #2f80ed;
   --color-error: #b91c1c;
   --color-success: #15803d;
 

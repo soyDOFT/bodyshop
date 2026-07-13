@@ -12,7 +12,7 @@
 }
 
 .requiredMark {
-  color: var(--color-accent-hover);
+  color: var(--color-cta);
   margin-left: var(--space-1);
 }
 
