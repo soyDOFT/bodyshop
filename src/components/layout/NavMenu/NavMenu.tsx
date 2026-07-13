@@ -27,6 +27,7 @@ type NavMenuProps = {
   triggerId: string;
 };
 
+/** Render the mobile navigation drawer. */
 export function NavMenu({ links, quoteLink, open, onClose, triggerId }: NavMenuProps) {
   const pathname = usePathname();
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,7 @@ export function NavMenu({ links, quoteLink, open, onClose, triggerId }: NavMenuP
     if (!open) return;
     const focusFrameId = requestAnimationFrame(() => closeBtnRef.current?.focus());
 
+    /** Close on Escape and keep Tab inside the drawer. */
     function handleKeydown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         event.stopPropagation();
@@ -47,9 +49,10 @@ export function NavMenu({ links, quoteLink, open, onClose, triggerId }: NavMenuP
         const focusables = dialogRef.current?.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled])',
         );
-        if (!focusables || focusables.length === 0) return;
-        const firstFocusable = focusables[0];
-        const lastFocusable = focusables[focusables.length - 1];
+        const firstFocusable = focusables?.item(0);
+        const lastFocusable = focusables?.item(focusables.length - 1);
+        if (!firstFocusable || !lastFocusable) return;
+
         if (event.shiftKey && document.activeElement === firstFocusable) {
           event.preventDefault();
           lastFocusable.focus();
