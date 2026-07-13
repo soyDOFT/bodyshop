@@ -11,14 +11,17 @@ import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
 // data
 import { findServiceArea, SERVICE_AREAS } from 'src/data/serviceAreas';
 import { SERVICES } from 'src/data/services';
+import { PAGE_HERO_MEDIA } from 'src/data/mediaSelections';
 import { SITE_META } from 'src/data/siteMeta';
 
 type Params = { slug: string };
 
+/** Prerender one page per service area. */
 export async function generateStaticParams(): Promise<Params[]> {
   return SERVICE_AREAS.map(({ slug }) => ({ slug }));
 }
 
+/** Build the metadata for one service area. */
 export async function generateMetadata({
   params,
 }: {
@@ -29,11 +32,12 @@ export async function generateMetadata({
   if (!area) return { title: 'Service Area Not Found' };
   return {
     title: `${area.name} Body Shop`,
-    description: `Body-shop work for ${area.name} residents — collision repair, custom paint, and more — performed at our ${SITE_META.city} shop.`,
+    description: `Body shop work for ${area.name} residents, including collision repair, custom paint, and more, performed at our ${SITE_META.city} shop.`,
     alternates: { canonical: `/service-areas/${area.slug}` },
   };
 }
 
+/** Render a single service area page. */
 export default async function ServiceAreaPage({
   params,
 }: {
@@ -48,12 +52,13 @@ export default async function ServiceAreaPage({
       <PageHero
         eyebrow="Service Area"
         title={`${area.name} Body Shop`}
-        subtitle={`We serve ${area.name} from our shop in ${SITE_META.city}, ${SITE_META.state}. Drop your vehicle off — we will handle the rest.`}
+        subtitle={`We serve ${area.name} from our shop in ${SITE_META.city}, ${SITE_META.state}. Drop your vehicle off and we will handle the rest.`}
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Service Areas', href: '/service-areas' },
           { label: area.name },
         ]}
+        media={PAGE_HERO_MEDIA.serviceAreas}
       />
       <PageWithAside aside={<QuoteForm heading={`Quote for ${area.name}`} />}>
         <h2>Looking for a reliable body shop near {area.name}?</h2>
@@ -75,7 +80,7 @@ export default async function ServiceAreaPage({
             <strong>Reliable.</strong> Owner {SITE_META.ownerName} is there from start to finish.
           </li>
           <li>
-            <strong>Trustworthy.</strong> {SITE_META.yearsInBusiness} years in business — for a
+            <strong>Trustworthy.</strong> {SITE_META.yearsInBusiness} years in business, for a
             reason.
           </li>
           <li>

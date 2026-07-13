@@ -2,13 +2,14 @@
 import type { Metadata } from 'next';
 
 // components
+import { MediaImage } from 'src/components/media/MediaImage/MediaImage';
 import { PageHero } from 'src/components/layout/PageHero/PageHero';
 import { PageWithAside } from 'src/components/layout/PageWithAside/PageWithAside';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
 import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
 import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
 
 // data
+import { ABOUT_MEDIA, PAGE_HERO_MEDIA } from 'src/data/mediaSelections';
 import { SITE_META } from 'src/data/siteMeta';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: `Meet ${SITE_META.ownerName} and learn about ${SITE_META.yearsInBusiness} years of body-shop craftsmanship in ${SITE_META.city}, ${SITE_META.state}.`,
 };
 
+/** Render the About page. */
 export default function AboutPage() {
   return (
     <>
@@ -24,12 +26,13 @@ export default function AboutPage() {
         title="Owner-operated. Detail-obsessed."
         subtitle={`Owner ${SITE_META.ownerName} brings ${SITE_META.yearsInBusiness} years of auto-body and custom-painting experience to every job.`}
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+        media={PAGE_HERO_MEDIA.about}
       />
       <PageWithAside aside={<QuoteForm />}>
         <div
           style={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 16, overflow: 'hidden' }}
         >
-          <Placeholder fill alt={`${SITE_META.name} workshop`} />
+          <MediaImage item={ABOUT_MEDIA} fill sizes="(max-width: 960px) 100vw, 60vw" />
         </div>
         <h2>About {SITE_META.name}</h2>
         <p>
@@ -45,7 +48,7 @@ export default function AboutPage() {
           throughout your project.
         </p>
         <p>
-          We can repair damages and &ldquo;remove&rdquo; dents — not just fill them in like most shops. Our
+          We can repair damages and &ldquo;remove&rdquo; dents, not just fill them in like most shops. Our
           upholstery department can accommodate all your upholstery needs as well. We do powder
           coating, too.
         </p>

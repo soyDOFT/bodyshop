@@ -7,13 +7,15 @@ import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
 import { TestimonialList } from 'src/components/sections/TestimonialList/TestimonialList';
 
 // data
+import { PAGE_HERO_MEDIA } from 'src/data/mediaSelections';
 import { SITE_META } from 'src/data/siteMeta';
 
 export const metadata: Metadata = {
   title: 'Reviews',
-  description: `What our customers say about ${SITE_META.name} — body-shop work in ${SITE_META.city} and surrounding neighborhoods.`,
+  description: `What our customers say about ${SITE_META.name}, covering body shop work in ${SITE_META.city} and surrounding neighborhoods.`,
 };
 
+/** Render the Reviews page. */
 export default function ReviewsPage() {
   return (
     <>
@@ -22,6 +24,7 @@ export default function ReviewsPage() {
         title="What our customers say."
         subtitle="Repeat customers, fair prices, work that lasts. Hear it in their words."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Reviews' }]}
+        media={PAGE_HERO_MEDIA.reviews}
       />
       <TestimonialList />
       <QuoteCta />

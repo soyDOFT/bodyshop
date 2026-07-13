@@ -11,6 +11,7 @@ import { QuoteCta } from 'src/components/sections/QuoteCta/QuoteCta';
 import { QuoteForm } from 'src/components/form/QuoteForm/QuoteForm';
 
 // data
+import { PAGE_HERO_MEDIA } from 'src/data/mediaSelections';
 import { SITE_META } from 'src/data/siteMeta';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
   description: `Get in touch with ${SITE_META.name} in ${SITE_META.city}, ${SITE_META.state}.`,
 };
 
+/** Render the Contact page. */
 export default function ContactPage() {
   return (
     <>
@@ -26,6 +28,7 @@ export default function ContactPage() {
         title="Let's talk about your project."
         subtitle="Call, email, or send a quote request. We typically respond within one business day."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
+        media={PAGE_HERO_MEDIA.contact}
       />
       <PageWithAside aside={<QuoteForm heading="Send us a message" />}>
         <h2>Reach us directly</h2>

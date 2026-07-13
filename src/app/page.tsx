@@ -11,6 +11,7 @@ import { ServiceCards } from 'src/components/sections/ServiceCards/ServiceCards'
 // data
 import { SITE_META } from 'src/data/siteMeta';
 
+/** Render the home page. */
 export default function HomePage() {
   return (
     <>

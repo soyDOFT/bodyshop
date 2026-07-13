@@ -3,11 +3,12 @@ import styles from './ServiceCards.module.css';
 // components
 import { Button } from 'src/components/ui/Button/Button';
 import { Container } from 'src/components/ui/Container/Container';
-import { Placeholder } from 'src/components/media/Placeholder/Placeholder';
+import { MediaImage } from 'src/components/media/MediaImage/MediaImage';
 
 // data
 import { HOME_SERVICE_HIGHLIGHTS } from 'src/data/services';
 
+/** Highlight the three headline services on the home page. */
 export function ServiceCards() {
   return (
     <section className={styles.section} aria-labelledby="service-highlights-heading">
@@ -19,7 +20,12 @@ export function ServiceCards() {
           {HOME_SERVICE_HIGHLIGHTS.map((card) => (
             <li key={card.title} className={styles.card}>
               <div className={styles.cardMedia}>
-                <Placeholder decorative fill />
+                <MediaImage
+                  item={card.media}
+                  fill
+                  decorative
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
               <div className={styles.cardOverlay} aria-hidden />
               <div className={styles.cardBody}>
