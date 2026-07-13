@@ -46,13 +46,14 @@
   z-index: -1;
 }
 
+/* Never set max-width here, because Container sets one on the same element at equal specificity. */
+/* A tie makes stylesheet order decide the width, which made dev and prod disagree. Cap the text instead. */
 .content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-4);
   padding-block: var(--space-16);
-  max-width: 60ch;
 }
 
 .eyebrow {
@@ -66,6 +67,7 @@
 .title {
   font-size: var(--font-size-4xl);
   letter-spacing: -0.02em;
+  max-width: 22ch;
 }
 
 @media (min-width: 768px) {
