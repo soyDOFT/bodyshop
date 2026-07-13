@@ -1,0 +1,116 @@
+.section {
+  padding-block: var(--space-16);
+  background: var(--color-bg);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 540px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cell {
+  position: relative;
+}
+
+.tile {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: zoom-in;
+  background: var(--color-surface);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.tileVideo {
+  cursor: pointer;
+}
+
+.imageWrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+/* Play affordance so a clip is not mistaken for a still. */
+.playBadge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.05) 55%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.playIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  transition: transform var(--transition-fast);
+}
+
+.tile:hover .playIcon {
+  transform: scale(1.08);
+}
+
+/* Optical centering: the glyph's visual mass sits left of its box. */
+.playGlyph {
+  margin-left: 3px;
+  border-style: solid;
+  border-width: 8px 0 8px 13px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.duration {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: var(--font-size-xs, 0.75rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .playIcon {
+    transition: none;
+  }
+
+  .tile:hover {
+    transform: none;
+  }
+
+  .tile:hover .playIcon {
+    transform: none;
+  }
+}
