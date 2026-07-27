@@ -89,11 +89,16 @@ export function HeroCarousel() {
               aria-hidden={slideIndex !== selectedIndex || undefined}
             >
               <div className={styles.media}>
+                {/* Embla lays the slides out side by side, so every slide past the first sits a
+                    full viewport or more to the right — outside the lazy-load margin on desktop,
+                    where it would never be fetched until autoplay scrolled to it. Load them all;
+                    they are three small photos and autoplay shows every one of them. */}
                 <MediaImage
                   item={slide.media}
                   fill
                   decorative
-                  eager={slideIndex === 0}
+                  eager
+                  lcp={slideIndex === 0}
                   sizes="100vw"
                 />
               </div>

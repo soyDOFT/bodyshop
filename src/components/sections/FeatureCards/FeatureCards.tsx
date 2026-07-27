@@ -53,7 +53,7 @@ export function FeatureCards() {
                   fill
                   decorative
                   rounded="md"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 719px) 100vw, 33vw"
                 />
               </div>
               <div className={styles.body}>

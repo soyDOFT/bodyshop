@@ -25,7 +25,7 @@ export function PageHero({ title, eyebrow, subtitle, breadcrumbs, media }: PageH
   return (
     <section className={styles.hero} aria-labelledby="page-hero-title">
       <div className={styles.bg}>
-        <MediaImage item={background} fill decorative eager sizes="100vw" />
+        <MediaImage item={background} fill decorative eager lcp sizes="100vw" />
       </div>
       <div className={styles.overlay} aria-hidden />
       <Container className={styles.inner}>

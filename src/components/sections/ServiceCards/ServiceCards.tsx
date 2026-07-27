@@ -24,7 +24,7 @@ export function ServiceCards() {
                   item={card.media}
                   fill
                   decorative
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 719px) 100vw, 33vw"
                 />
               </div>
               <div className={styles.cardOverlay} aria-hidden />

@@ -1,8 +1,11 @@
+/* Stand in for the photo while it loads. Every fill slot sits under a scrim, so a flat tint
+   reads as part of the design, unlike a stretched blur-up of the wrong aspect ratio. */
 .fillWrap {
   position: absolute;
   inset: 0;
   display: block;
   overflow: hidden;
+  background: var(--color-surface-strong);
 }
 
 .image {

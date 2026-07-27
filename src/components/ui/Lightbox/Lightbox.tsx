@@ -104,7 +104,7 @@ export function Lightbox({ items, openIndex, onClose, onPrev, onNext }: Lightbox
                   // Key by id so stepping to another clip mounts a fresh element rather than reusing one mid playback.
                   <VideoPlayer key={currentItem.id} item={currentItem} autoPlay />
                 ) : (
-                  <MediaImage item={currentItem} fill sizes="(max-width: 768px) 90vw, 80vw" eager />
+                  <MediaImage item={currentItem} fill sizes="(max-width: 768px) 90vw, 80vw" eager lcp />
                 )}
               </div>
               <figcaption className={styles.caption}>{currentItem.alt}</figcaption>
