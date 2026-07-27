@@ -1,3 +1,5 @@
+import styles from './about.module.css';
+
 // next
 import type { Metadata } from 'next';
 
@@ -29,10 +31,12 @@ export default function AboutPage() {
         media={PAGE_HERO_MEDIA.about}
       />
       <PageWithAside aside={<QuoteForm />}>
-        <div
-          style={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 16, overflow: 'hidden' }}
-        >
-          <MediaImage item={ABOUT_MEDIA} fill sizes="(max-width: 960px) 100vw, 60vw" />
+        <div className={styles.photo}>
+          <MediaImage
+            item={ABOUT_MEDIA}
+            fill
+            sizes="(max-width: 959px) 100vw, (max-width: 1200px) 55vw, 700px"
+          />
         </div>
         <h2>About {SITE_META.name}</h2>
         <p>
