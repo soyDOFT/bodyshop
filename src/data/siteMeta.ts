@@ -7,7 +7,7 @@ export const SITE_META = {
     "Charlotte's trusted body shop for collision repair, custom paint, and restoration. 30+ years of experience serving Charlotte and surrounding neighborhoods.",
   city: 'Charlotte',
   state: 'NC',
-  address: '2316 Beattles Ford Rd. Charlotte, NC 28216-4314',
+  address: '2316 Beatties Ford Rd. Charlotte, NC 28216-4314',
   phone: '(704) 617-7546',
   phoneHref: 'tel:+17046177546',
   email: 'bodyshop2316@gmail.com',
